@@ -5,6 +5,7 @@ app.controller('coachController',function($scope, $http){
 	$scope.name = "";
 	$scope.second_name="";
 	$scope.selected_id ="";
+	$scope.selected_coach = false;
 
 	$scope.add=false;
 	$http.get("http://localhost:3000/coach").then((response)=>{
@@ -20,7 +21,7 @@ app.controller('coachController',function($scope, $http){
 		coach.name = name;
 		coach.second_name = second_name;
 		$http.post("http://localhost:3000/coach", coach).then((response)=>{
-		$scope.coaches = response.data;
+			$scope.coaches = response.data;
 		});
 		$scope.add=false;
 	}
@@ -35,7 +36,12 @@ app.controller('coachController',function($scope, $http){
 		});
 	}
 
-
+	$scope.addToTeam = (id) => {
+		$http.get("http://localhost:3000/team/add/coach/" + id).then((response)=>{
+			if(response.data == true)
+				$scope.selected_coach = true;
+		});
+	}
 
 
 	$scope.updateModal = (name, second_name,id) =>{

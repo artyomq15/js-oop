@@ -16,7 +16,7 @@ const Team = require('./models/team.js');
 
 let footballers = [];
 let coaches = [];
-let team = {};
+let team = new Team("Orsenal");
 
 
 
@@ -151,10 +151,19 @@ app.delete('/team', (req,res)=>{
 })
 
 app.get('/team/add/:id',function (req,res){
-	footballers.forEach(function(item,i,arr){
-		if(item.id==req.params.id)
-		team.squad.push(footballers[i]);
+	let isInTeam = false;
+	team.squad.forEach(function(obj,j,ar){
+		if(obj.id==req.params.id)
+			isInTeam=true;
 	});
+	if(isInTeam==false){
+		footballers.forEach(function(item,i,arr){
+
+			if(item.id==req.params.id)
+				team.squad.push(footballers[i]);
+					});
+	}
+
 
 	res.send(team);
 
@@ -162,9 +171,9 @@ app.get('/team/add/:id',function (req,res){
 app.delete('/team/delete/:id',function (req,res){
 	team.squad.forEach(function(item,i,arr){
 		if(item.id==req.params.id)
-		team.squad.splice(i,1);
+			team.squad.splice(i,1);
 	});
-	res.send("OK");
+	res.send(team);
 });
 
 app.get('/team/add/coach/:id',function (req,res){
@@ -173,11 +182,11 @@ app.get('/team/add/coach/:id',function (req,res){
 		team.coach = coaches[i];
 	});
 
-	res.send(team);
+	res.send(true);
 });
-app.delete('/team/delete/coach',function (req,res){
+app.delete('/team/delete/post/coach',function (req,res){
 	team.coach = {};
-	res.send("OK");
+	res.send(team);
 });
 
 

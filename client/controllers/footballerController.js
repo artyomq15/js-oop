@@ -8,7 +8,7 @@ app.controller('footballerController',function($scope, $http){
 
 	$scope.add=false;
 	$http.get("http://localhost:3000/footballer").then((response)=>{
-	$scope.footballers = response.data;
+		$scope.footballers = response.data;
 	});
 	$scope.deleteFootballer = (id) =>{
 		$http.delete("http://localhost:3000/footballer/" + id).then((response)=>{
@@ -36,6 +36,11 @@ app.controller('footballerController',function($scope, $http){
 	}
 
 
+	$scope.addToTeam = (id) =>{
+		$http.get("http://localhost:3000/team/add/" + id).then((response)=>{
+		
+		});
+	}
 
 
 	$scope.updateModal = (name, second_name,id) =>{
