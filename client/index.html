@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Footballers</title>
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/master.css">
+  </head>
+  <body>
+
+    <div class="row main">
+		<!--START COACH-->
+      <div class="col-md-4" ng-controller="coachController">
+        <h2>Coaches:</h2>
+        <span class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#coachModal" ng-click="add=true"></span>
+
+		<!--ONE COACH-->
+        <div class="panel panel-default" ng-repeat="coach in coaches">
+          <div class="panel-body">
+            <span ng-bind="coach.name"></span>
+			<span ng-bind="coach.second_name"></span>
+            <span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#coachModal" ng-click="updateModal(coach.name, coach.second_name, coach.id); add=false; "></span>
+            <span class="glyphicon glyphicon-remove" ng-click="deleteCoach(coach.id)"></span>
+          </div>
+        </div>
+
+   <!--END ONE COACH -->
+
+
+			<!--modal-->
+			<div class="modal fade" tabindex="-1" role="dialog" id="coachModal">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" ng-click="add=false;" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title">Modal title</h4>
+		      </div>
+		      <div class="modal-body">
+				  <div class="input-group">
+		 				 <span class="input-group-addon" id="name">name</span>
+						 <input type="text" class="form-control" placeholder="name" aria-describedby="basic-addon1" ng-model="name">
+				</div>
+				<div class="input-group">
+					   <span class="input-group-addon" id="second_name">second_name</span>
+					   <input type="text" class="form-control" placeholder="second_name" aria-describedby="basic-addon1" ng-model="second_name">
+			  </div>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary" ng-show="add" ng-click="addCoach(name,second_name); name = null; second_name = null;" data-dismiss="modal">Add</button>
+				<button type="button" class="btn btn-primary" ng-show="add == false" ng-click="updateCoach(name,second_name); name = null; second_name = null;" data-dismiss="modal">Update</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+  </div>
+
+
+  <!--END COACH-->
+
+      <div class="col-md-4">
+        <h1>Arsenal</h1>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            Arsen Wenger
+          </div>
+        </div>
+        <hr>
+        <h3>Squard:</h3>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            Olivie Giroud
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-body">
+            Olivie Giroud
+          </div>
+        </div>
+
+
+      </div>
+
+
+<!--FOOTBALLERS-->
+      <div class="col-md-4" ng-controller="footballerController">
+        <h2>Footballers:</h2>
+		<span class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#footballerModal" ng-click="add=true"></span>
+
+		<!--one footballer-->
+        <div class="panel panel-default" ng-repeat="footballer in footballers">
+          <div class="panel-body">
+			  <span ng-bind="footballer.name"></span>
+  			<span ng-bind="footballer.second_name"></span>
+			<span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#footballerModal" ng-click="updateModal(footballer.name, footballer.second_name, footballer.id); add=false; "></span>
+			 <span class="glyphicon glyphicon-remove" ng-click="deleteFootballer(footballer.id)"></span>
+          </div>
+        </div>
+		<!--end one footballer-->
+
+				<!-- modal-->
+				<div class="modal fade" tabindex="-1" role="dialog" id="footballerModal">
+				<div class="modal-dialog" role="document">
+				<div class="modal-content">
+				  <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" ng-click="add=false;" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Modal title</h4>
+				  </div>
+				  <div class="modal-body">
+					  <div class="input-group">
+							 <span class="input-group-addon" id="name">name</span>
+							 <input type="text" class="form-control" placeholder="name" aria-describedby="basic-addon1" ng-model="name">
+					</div>
+					<div class="input-group">
+						   <span class="input-group-addon" id="second_name">second_name</span>
+						   <input type="text" class="form-control" placeholder="second_name" aria-describedby="basic-addon1" ng-model="second_name">
+				  </div>
+				  </div>
+				  <div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" ng-show="add" ng-click="addFootballer(name,second_name); name = null; second_name = null;" data-dismiss="modal">Add</button>
+						<button type="button" class="btn btn-primary" ng-show="add == false" ng-click="updateFootballer(name,second_name); name = null; second_name = null;" data-dismiss="modal">Update</button>
+				  </div>
+				</div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+
+
+
+
+
+      </div>
+    </div>
+
+
+	<script src="node_modules/jquery/dist/jquery.js" charset="utf-8"></script>
+	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js" charset="utf-8"></script>
+    <script src="node_modules/angular/angular.js" charset="utf-8"></script>
+	<script type="text/javascript" src="app.js"></script>
+	<script type="text/javascript" src="controllers/coachController.js"></script>
+	<script type="text/javascript" src="controllers/footballerController.js"></script>
+    <!-- <script src="node_modules/bootstrap/js/" charset="utf-8"></script> -->
+  </body>
+</html>

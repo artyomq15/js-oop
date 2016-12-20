@@ -1,0 +1,25 @@
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+.main {
+  margin: 0px;
+}
+
+.main div:first-child {
+  background-color: skyblue;
+}
+.main div:nth-child(2) {
+  background-color: green;
+}
+.main div:nth-child(3){
+  background-color: red;
+}
+
+.panel {
+  margin-top: 10px;
+}
+.panel-body {
+  background-color: white !important;
+}
