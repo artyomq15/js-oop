@@ -7,14 +7,29 @@ body {
   margin: 0px;
 }
 
-.main div:first-child {
-  background-color: skyblue;
+.coaches {
+ /* background-color: skyblue;*/
 }
-.main div:nth-child(2) {
+.coaches>h2{
+	text-align: center;
+}
+.addButton{
+	width: 100%;
+}
+.input_gr{
+	margin-bottom: 5px;
+}
+.buttons>button{
+	margin: 2px;
+}
+.team{
   background-color: green;
 }
-.main div:nth-child(3){
-  background-color: red;
+.footballers{
+  /*background-color: red;*/
+}
+.footballers>h2{
+	text-align: center;
 }
 
 .panel {

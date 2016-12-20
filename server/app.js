@@ -16,7 +16,7 @@ const Team = require('./models/team.js');
 
 let footballers = [];
 let coaches = [];
-let team = new Team("Orsenal");
+let team = new Team("Dream Team");
 
 
 
@@ -46,7 +46,7 @@ app.get('/footballer/:id', function (req, res) {
 });
 
 app.post('/footballer',function (req,res){
-	let footballer = new Footballer(req.body.name, req.body.second_name, req.body.img_src, req.body.age, req.body.club, req.body.coutry, req.body.stars, 0, req.body.position, req.body.skill);
+	let footballer = new Footballer(req.body.name, req.body.second_name, req.body.img_src, req.body.age,req.body.country, req.body.club,  req.body.stars, 0, req.body.position, req.body.skill);
 	footballers.push(footballer);
 	res.send(footballers);
 
@@ -60,8 +60,8 @@ app.put('/footballer/:id',function(req,res){
 			footballer.second_name=req.body.second_name;
 			footballer.img_src = req.body.img_src;
 			footballer.age = req.body.age;
+			footballer.country = req.body.country;
 			footballer.club = req.body.club;
-			footballer.country = req.body.coutry;
 			footballer.stars = req.body.stars;
 			footballer.position = req.body.position;
 			footballer.skill = req.body.skill;
@@ -97,7 +97,7 @@ app.get('/coach/:id', function (req, res) {
 });
 
 app.post('/coach',(req,res)=>{
-	let coach = new Coach(req.body.name, req.body.second_name, req.body.img_src, req.body.age, req.body.club, req.body.coutry, req.body.stars, 0, req.body.work);
+	let coach = new Coach(req.body.name, req.body.second_name, req.body.img_src, req.body.age,req.body.country, req.body.club,  req.body.stars, 0, req.body.work);
 	coaches.push(coach);
 	res.send(coaches);
 
@@ -111,8 +111,8 @@ app.put('/coach/:id',function(req,res){
 			coach.second_name=req.body.second_name;
 			coach.img_src = req.body.img_src;
 			coach.age = req.body.age;
+			coach.country = req.body.country;
 			coach.club = req.body.club;
-			coach.country = req.body.coutry;
 			coach.stars = req.body.stars;
 			coach.work =req.body.work;
 			coaches[i]=coach;

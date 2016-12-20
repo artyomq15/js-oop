@@ -4,6 +4,10 @@ app.controller('coachController',function($scope, $http){
 
 	$scope.name = "";
 	$scope.second_name="";
+	$scope.age = "";
+	$scope.country = "";
+	$scope.club = "";
+	$scope.work = "";
 	$scope.selected_id ="";
 	$scope.selected_coach = false;
 
@@ -16,10 +20,14 @@ app.controller('coachController',function($scope, $http){
 		$scope.coaches = response.data;
 		});
 	}
-	$scope.addCoach = (name,second_name) =>{
+	$scope.addCoach = (name,second_name,age,country, club, work) =>{
 		let coach ={};
 		coach.name = name;
 		coach.second_name = second_name;
+		coach.age = age;
+		coach.country = country;
+		coach.club = club;
+		coach.work = work;
 		$http.post("http://localhost:3000/coach", coach).then((response)=>{
 			$scope.coaches = response.data;
 		});
@@ -27,10 +35,14 @@ app.controller('coachController',function($scope, $http){
 	}
 
 
-	$scope.updateCoach = (name,second_name) =>{
+	$scope.updateCoach = (name,second_name,age,country, club, work) =>{
 		let coach ={};
 		coach.name = name;
 		coach.second_name = second_name;
+		coach.age = age;
+		coach.country = country;
+		coach.club = club;
+		coach.work = work;
 		$http.put("http://localhost:3000/coach/"+$scope.selected_id, coach).then((response)=>{
 		$scope.coaches = response.data;
 		});
@@ -44,9 +56,13 @@ app.controller('coachController',function($scope, $http){
 	}
 
 
-	$scope.updateModal = (name, second_name,id) =>{
+	$scope.updateModal = (name, second_name,age,country, club, work, id) =>{
 		$scope.name = name;
 		$scope.second_name = second_name;
+		$scope.age = age;
+		$scope.country = country;
+		$scope.club = club;
+		$scope.work = work;
 		$scope.selected_id = id;
 	}
 });
