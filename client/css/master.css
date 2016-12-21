@@ -1,6 +1,7 @@
 body {
-  margin: 0px;
-  padding: 0px;
+	font-family: sans-serif;;
+ 	margin: 0px;
+	padding: 0px;
 }
 
 .main {
@@ -23,7 +24,21 @@ body {
 	margin: 2px;
 }
 .team{
-  background-color: green;
+	margin-top: 20px;
+	padding: 10px;
+	background-color:#80b4c8;
+	border-radius: 5px;;
+}
+.team>h1 {
+	font-size: 46px;
+	text-align: center;
+}
+.team>h3{
+	text-align: center;
+}
+.spans_names{
+	font-size: 26px;
+	font-weight: bold;
 }
 .footballers{
   /*background-color: red;*/

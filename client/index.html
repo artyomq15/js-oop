@@ -21,9 +21,10 @@
           <div class="panel-body">
 			  <div class="row">
 				  <div class="col-md-9">
-
+					 <div class="spans_names">
 			            <span ng-bind="coach.name"></span>
 						<span ng-bind="coach.second_name"></span>
+					</div>
 						<br>
 						<span ng-bind="coach.age"></span><span> y.o.</span>
 						<br>
@@ -94,27 +95,54 @@
   <!--END COACH-->
 
       <div class="col-md-4 team" ng-controller="teamController">
-        <span class="glyphicon glyphicon-refresh"  ng-click="reloadPage()"></span>
         <h1 ng-bind="team.name"></h1>
+		<hr>
+        <h3>Coach</h3>
         <div class="panel panel-default">
           <div class="panel-body">
-            <span ng-bind="team.coach.name"></span>
-            <span ng-bind="team.coach.second_name"></span>
-			<span class="glyphicon glyphicon-remove" ng-click="deleteCoachFromTeam()"></span>
-          </div>
+			  <div class="row">
+				 <div class="col-md-10">
+					 <div class="spans_names">
+			            <span ng-bind="team.coach.name"></span>
+			            <span ng-bind="team.coach.second_name"></span>
+					</div>
+					<br>
+					<span>Club: </span><span ng-bind="team.coach.club"></span>
+					<br>
+					<span>Experience: </span><span ng-bind="team.coach.work"></span>
+				</div>
+			  <div class="col-md-2">
+					<button class="btn-danger"  ng-click="deleteCoachFromTeam()" ><span class="glyphicon glyphicon-remove"></span></button>
+				</div>
+			  </div>
+
+		  </div>
         </div>
         <hr>
-        <h3>Squard:</h3>
+        <h3>Squad</h3>
 
         <!-- player -->
         <div class="panel panel-default" ng-repeat="player in team.squad">
           <div class="panel-body">
-            <span ng-bind="player.name"></span>
-            <span ng-bind="player.second_name"></span>
-			<span class="glyphicon glyphicon-remove" ng-click="deleteFootballerFromTeam(player.id)"></span>
-          </div>
+			  <div class="row">
+				<div class="col-md-10">
+					 <div class="spans_names">
+			            <span ng-bind="player.name"></span>
+			            <span ng-bind="player.second_name"></span>
+					</div>
+					<br>
+					<span>Club: </span><span ng-bind="player.club"></span>
+					<br>
+					<span>Skill: </span><span ng-bind="player.skill"></span>
+				</div>
+			  <div class="col-md-2">
+					<button class="btn-danger"   ng-click="deleteFootballerFromTeam(player.id)"><span class="glyphicon glyphicon-remove"></span></button>
+				</div>
+				</div>
+		  </div>
         </div>
         <!-- player end -->
+		<button class="addButton"   ng-click="reloadPage()"><span class="glyphicon glyphicon-ok"></span></button>
       </div>
 
 
@@ -127,11 +155,29 @@
 		<!--one footballer-->
         <div class="panel panel-default" ng-repeat="footballer in footballers">
           <div class="panel-body">
-			  <span ng-bind="footballer.name"></span>
-  			<span ng-bind="footballer.second_name"></span>
-			<span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#footballerModal" ng-click="updateModal(footballer.name, footballer.second_name, footballer.id); add=false; "></span>
-			 <span class="glyphicon glyphicon-remove" ng-click="deleteFootballer(footballer.id)"></span>
-			 <span class="glyphicon glyphicon-arrow-right"  ng-click="addToTeam(footballer.id)"></span>
+			  <div class="row">
+				 <div class="col-md-9">
+					  <div class="spans_names">
+							  <span ng-bind="footballer.name"></span>
+				  			<span ng-bind="footballer.second_name"></span>
+						</div>
+<br>
+							<span ng-bind="footballer.age"></span><span> y.o.</span>
+							<br>
+							<span>Country: </span><span ng-bind="footballer.country"></span>
+							<br>
+							<span>Club: </span><span ng-bind="footballer.club"></span>
+							<br>
+							<span>Position: </span><span ng-bind="footballer.position"></span>
+							<br>
+							<span>Skill: </span><span ng-bind="footballer.skill"></span>
+						</div>
+						<div class="col-md-3 buttons">
+							<button class="btn-primary"  data-toggle="modal" data-target="#footballerModal" ng-click="updateModal(footballer.name, footballer.second_name,footballer.age, footballer.country, footballer.club, footballer.position, footballer.skill, footballer.id); add=false; "><span class="glyphicon glyphicon-pencil"></span></button>
+							<button class="btn-danger"   ng-click="deleteFootballer(footballer.id)"> <span class="glyphicon glyphicon-remove"></span></button>
+							<button class="btn-success"  ng-click="addToTeam(footballer.id)"> <span class="glyphicon glyphicon-arrow-right"  ></span></button>
+						 </div>
+					 </div>
           </div>
         </div>
 		<!--end one footballer-->
@@ -153,11 +199,31 @@
 						   <span class="input-group-addon" id="second_name">second_name</span>
 						   <input type="text" class="form-control" placeholder="second_name" aria-describedby="basic-addon1" ng-model="second_name">
 				  </div>
+				  <div class="input-group input_gr">
+						 <span class="input-group-addon" id="age">age</span>
+						 <input type="text" class="form-control" placeholder="age" aria-describedby="basic-addon1" ng-model="age">
+				</div>
+				<div class="input-group input_gr">
+					   <span class="input-group-addon" id="country">country</span>
+					   <input type="text" class="form-control" placeholder="country" aria-describedby="basic-addon1" ng-model="country">
+			  </div>
+			  <div class="input-group input_gr">
+					 <span class="input-group-addon" id="club">club</span>
+					 <input type="text" class="form-control" placeholder="club" aria-describedby="basic-addon1" ng-model="club">
+			</div>
+			<div class="input-group input_gr">
+				   <span class="input-group-addon" id="position">position</span>
+				   <input type="text" class="form-control" placeholder="position" aria-describedby="basic-addon1" ng-model="position">
+		  </div>
+		  <div class="input-group input_gr">
+				 <span class="input-group-addon" id="skill">skill</span>
+				 <input type="text" class="form-control" placeholder="skill" aria-describedby="basic-addon1" ng-model="skill">
+		</div>
 				  </div>
 				  <div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary" ng-show="add" ng-click="addFootballer(name,second_name); name = null; second_name = null;" data-dismiss="modal">Add</button>
-						<button type="button" class="btn btn-primary" ng-show="add == false" ng-click="updateFootballer(name,second_name); name = null; second_name = null;" data-dismiss="modal">Update</button>
+					<button type="button" class="btn btn-primary" ng-show="add" ng-click="addFootballer(name,second_name,age, country,club, position, skill); name = null; second_name = null;age=null; country=null; club=null; position=null; skill=null;" data-dismiss="modal">Add</button>
+						<button type="button" class="btn btn-primary" ng-show="add == false" ng-click="updateFootballer(name,second_name,age, country,club, position, skill); name = null; second_name = null; age=null; country=null; club=null; position=null; skill=null;" data-dismiss="modal">Update</button>
 				  </div>
 				</div><!-- /.modal-content -->
 				</div><!-- /.modal-dialog -->
